@@ -5,7 +5,8 @@ import { apiGetStoryByIdUnstable } from "../api/stories-api";
 export default createStore( {
 	state: {
 		imgArr: [],
-		nowImg: 0
+		nowImg: 0,
+		isLoading: true
 	},
 	actions: {
 		handleImgArr ( { commit }, payload ) {
@@ -45,6 +46,9 @@ export default createStore( {
 		},
 		handleDecrease ( { commit } ) {
 			commit( "setNowImg", -1 );
+		},
+		handleLoading ( { commit } ) {
+			commit( "setLoadingStatus" );
 		}
 	},
 	mutations: {
@@ -65,6 +69,9 @@ export default createStore( {
 					state.nowImg = state.imgArr.length - 1;
 				}
 			}
+		},
+		setLoadingStatus ( state ) {
+			state.isLoading = false;
 		}
 	},
 	getters: {
@@ -73,6 +80,9 @@ export default createStore( {
 		},
 		getNowImg ( state ) {
 			return state.nowImg;
+		},
+		getIsLoading ( state ) {
+			return state.isLoading;
 		}
 	}
 } );

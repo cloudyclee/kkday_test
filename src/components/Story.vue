@@ -17,12 +17,10 @@ export default {
 </script>
 
 <template>
-	<transition name="fade">
-		<div class="img_container" v-show="nowImg === img.index">
-			<img :src="img.imageUrl" alt="旅遊故事" />
-			<div class="story__text">{{ img.text }}</div>
-		</div>
-	</transition>
+	<div class="img_container" v-show="nowImg === img.index">
+		<img :src="img.imageUrl" alt="旅遊故事" />
+		<div class="story__text">{{ img.text }}</div>
+	</div>
 </template>
 
 <style lang="sass" scoped>
@@ -53,10 +51,6 @@ export default {
         line-height: 1.5
         white-space: normal
         word-break: break-word
-.fade-leave-to, .fade-enter-from
-    opacity: 0
-.fade-enter-to, .fade-leave-form
-    opacity: 1
 @media screen and (max-width: 576px)
     .img_container
         img
